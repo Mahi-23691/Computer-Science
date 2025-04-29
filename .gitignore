@@ -9,7 +9,6 @@
 /.vscode
 /.vs
 /bin
-test.py
 *.obj
 
 # Won't ignore these .exe files
