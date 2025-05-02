@@ -1,6 +1,6 @@
 import sqlite3
 
-DATABASE = 'C:\PersonalUse\School\Software Engineering\SQL\cars.db'
+DATABASE = 'SQL\Cars\cars.db'
 
 def print_all_cars():
     with sqlite3.connect(DATABASE) as db:

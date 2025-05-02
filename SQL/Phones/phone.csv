@@ -1,0 +1,11 @@
+phone_id,model_name,manufacturer_id,release_date,os,screen_size,battery_capacity,price_usd
+1,iPhone 15 Pro,1,2023-09-22,iOS,6.1,3274,999.00
+2,Galaxy S23 Ultra,2,2023-02-17,Android,6.8,5000,1199.99
+3,Redmi Note 12 Pro,3,2022-10-27,Android,6.67,5000,299.99
+4,Find X5 Pro,4,2022-03-14,Android,6.7,5000,1299.00
+5,X90 Pro,5,2022-11-22,Android,6.78,4870,1199.00
+6,Mate 50 Pro,6,2022-09-06,HarmonyOS,6.74,4700,1299.00
+7,11 5G,7,2023-02-07,Android,6.7,5000,699.00
+8,Pixel 8 Pro,8,2023-10-04,Android,6.7,5050,999.00
+9,iPhone 14,1,2022-09-16,iOS,6.1,3279,799.00
+10,Galaxy Z Flip5,2,2023-08-11,Android,6.7,3700,999.99
