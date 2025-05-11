@@ -14,53 +14,64 @@ def connect_db():
     return sqlite3.connect(DATABASE)
 
 def print_header(title):
-    print(f"\n{'='*10} {title} {'='*10}")
+    print(f"\n{'=' * 10} {title} {'=' * 10}")
 
 # Functions
+
+#View Everything
 def view_all_people():
     db = connect_db()
     cursor = db.cursor()
+    
     cursor.execute('SELECT * FROM People;')
     people = cursor.fetchall()
 
     print_header("All Billionaires")
+
     for person in people:
         print(f"{person[0]:>3}) {person[1]}, Age: {person[3]}, Country: {person[5]}, City: {person[6]}, Net Worth: ${person[8]}B")
     
     db.close()
 
+# Main Sorting Function
 def sort_by(attribute):
     db = connect_db()
     cursor = db.cursor()
     sql = f'SELECT name, age, country, city, rank, net_worth_billion FROM People ORDER BY {attribute} DESC;'
+
     cursor.execute(sql)
     results = cursor.fetchall()
 
     print_header(f"Sorted by {attribute.replace('_', ' ').title()}")
-    for r in results:
-        print(f"{r[0]} | Age: {r[1]} | {r[2]}, {r[3]} | Rank: {r[4]} | Net Worth: ${r[5]}B")
+    for result in results:
+        print(f"{result[0]} | Age: {result[1]} | {result[2]}, {result[3]} | Rank: {result[4]} | Net Worth: ${result[5]}B")
     
     db.close()
 
+# Filter by location with input
 def filter_by_location():
     country = input("Enter a country: ").strip()
     db = connect_db()
     cursor = db.cursor()
+
     cursor.execute('SELECT name, city, net_worth_billion FROM People WHERE country = ? COLLATE NOCASE;', (country,))
     results = cursor.fetchall()
 
     print_header(f"Billionaires in {country}")
+
     if results:
-        for r in results:
-            print(f"{r[0]} from {r[1]} | Net Worth: ${r[2]}B")
+        for result in results:
+            print(f"{result[0]} from {result[1]} | Net Worth: ${result[2]}B")
     else:
         print("No data found.")
     
     db.close()
 
+# Summary
 def view_summary():
     db = connect_db()
     cursor = db.cursor()
+
     cursor.execute('''
         SELECT People.name, Summary.organization_name, Summary.position_in_organization, Summary.self_made
         FROM People JOIN Summary ON People.person_id = Summary.person_id;
@@ -68,14 +79,17 @@ def view_summary():
     results = cursor.fetchall()
 
     print_header("Organization Information")
-    for r in results:
-        print(f"{r[0]} | {r[1]} - {r[2]} | {'Self-Made' if str(r[3]).lower() == 'true' else 'Inherited'}")
+
+    for result in results:
+        print(f"{result[0]} | {result[1]} - {result[2]} | {'Self-Made' if str(result[3]).lower() == 'true' else 'Inherited'}")
     
     db.close()
 
+# View Wealth Source
 def view_wealth_sources():
     db = connect_db()
     cursor = db.cursor()
+
     cursor.execute('''
         SELECT People.name, WealthSource.business_industries
         FROM People JOIN WealthSource ON People.person_id = WealthSource.person_id;
@@ -83,8 +97,9 @@ def view_wealth_sources():
     results = cursor.fetchall()
 
     print_header("Wealth Sources")
-    for r in results:
-        print(f"{r[0]} | Industry: {r[1]}")
+
+    for result in results:
+        print(f"{result[0]} | Industry: {result[1]}")
     
     db.close()
 
