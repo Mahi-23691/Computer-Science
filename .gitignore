@@ -10,6 +10,7 @@
 /.vs
 /bin
 *.obj
-
+app.py
+\templates
 # Won't ignore these .exe files
 # !special.exe
