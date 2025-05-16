@@ -4,7 +4,7 @@
 import sqlite3
 
 # Constants and Variables
-DATABASE = r'C:\PersonalUse\School\Computer Science\SQL\Rich People\rich_people.db'
+DATABASE = r'SQL\Rich People\rich_people.db'
 
 # Work Functions
 
@@ -18,7 +18,15 @@ def print_header(title):
 
 # Allign with gaps
 def gap(value, width):
-    return str(value) if value else "N/A"
+    if value is None:
+        return "N/A"
+    if isinstance(value, float):
+        # Remove decimal if it's a whole number
+        if value.is_integer():
+            return f"{int(value)}B"
+        else:
+            return f"{value:.1f}B"
+    return str(value)
 
 # Functions
 

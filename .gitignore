@@ -12,5 +12,6 @@
 *.obj
 app.py
 \templates
+\utilities
 # Won't ignore these .exe files
 # !special.exe
