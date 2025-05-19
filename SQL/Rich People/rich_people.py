@@ -19,14 +19,13 @@ def print_header(title):
 # Allign with gaps
 def gap(value, width):
     if value is None:
-        return "N/A"
+        return "[N/A]".ljust(width)
     if isinstance(value, float):
-        # Remove decimal if it's a whole number
         if value.is_integer():
-            return f"{int(value)}B"
+            return f"{int(value)}B".ljust(width)
         else:
-            return f"{value:.1f}B"
-    return str(value)
+            return f"{value:.1f}B".ljust(width)
+    return str(value).ljust(width)
 
 # Functions
 
@@ -83,6 +82,26 @@ def filter_by_location():
 
     db.close()
 
+# Filter by gender with input
+def filter_by_gender():
+    gender = input("Enter a gender ((M)ale / )(F)emale): ").strip()
+    db = connect_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT name, gender, net_worth_billion FROM People WHERE gender = ? COLLATE NOCASE;', (gender,))
+    results = cursor.fetchall()
+
+    print_header(f"{gender} Billionaires")
+    print(f"{'Name':<25} {'Gender':<20} {'Net Worth ($B)':<15}")
+    print("-" * 65)
+
+    if results:
+        for result in results:
+            print(f"{gap(result[0], 25):<25} {gap(result[1], 20):<20} ${gap(result[2], 10):<}")
+    else:
+        print("No data found.")
+
+    db.close()
+
 # View organization and position
 def view_summary():
     db = connect_db()
@@ -101,10 +120,16 @@ def view_summary():
         name = gap(result[0], 25)
         org = gap(result[1], 30)
         position = gap(result[2], 25)
-        origin = "Self-Made" if str(result[3]).lower() == 'true' else "Inherited"
-        print(f"{name:<25} {org:<30} {position:<25} {origin:<10}")
+
+        if result[3] is None:
+            origin = "[N/A]"
+        else:
+            origin = "Self-Made" if result[3] == 1 else "Inherited"
+
+        print(f"{name}{org}{position}{gap(origin, 10)}")
 
     db.close()
+
 
 # View business industries
 def view_wealth_sources():
@@ -137,6 +162,7 @@ def main():
         print("6) View organization info")
         print("7) View wealth sources")
         print("8) Exit")
+        print("9) Filter by gender")
 
         choice = input("Enter your choice: ").strip()
 
@@ -157,6 +183,8 @@ def main():
         elif choice == '8':
             print("Exiting. Goodbye!")
             break
+        elif choice == '9':
+            filter_by_gender()
         else:
             print("Invalid option. Please try again.")
 
