@@ -4,7 +4,7 @@
 import sqlite3
 
 # Constants and Variables
-DATABASE = r'SQL\Rich People\rich_people.db'
+DATABASE = r'C:\PersonalUse\School\Computer Science\SQL\Rich People\rich_people.db'
 
 # Work Functions
 
@@ -118,18 +118,17 @@ def view_summary():
 
     for result in results:
         name = gap(result[0], 25)
-        org = gap(result[1], 30)
-        position = gap(result[2], 25)
+        organization = gap(result[1] if result[1] else None, 30)
+        position = gap(result[2] if result[2] else None, 25)
 
-        if result[3] is None:
+        if not result[3] in (0, 1):
             origin = "[N/A]"
         else:
             origin = "Self-Made" if result[3] == 1 else "Inherited"
 
-        print(f"{name}{org}{position}{gap(origin, 10)}")
+        print(f"{name}{organization}{position}{gap(origin, 10)}")
 
     db.close()
-
 
 # View business industries
 def view_wealth_sources():
