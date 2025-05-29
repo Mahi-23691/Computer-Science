@@ -11,7 +11,8 @@
 /bin
 *.obj
 app.py
-\templates
-\utilities
+/utilities
+/Testing
+
 # Won't ignore these .exe files
 # !special.exe

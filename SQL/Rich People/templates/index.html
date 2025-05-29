@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billionaires Ranking</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='index.css') }}">
+</head>
+<body>
+    <h1>Top Billionaires</h1>
+
+    <form method="get" action="{{ url_for('homepage') }}">
+        <label for="country">Country:</label>
+        <input type="text" name="country" id="country" value="{{ country or '' }}">
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="">-- Select --</option>
+            <option value="Male" {% if gender == "Male" %}selected{% endif %}>Male</option>
+            <option value="Female" {% if gender == "Female" %}selected{% endif %}>Female</option>
+        </select>
+
+        <button type="submit">Apply Filters</button>
+    </form>
+
+    <p>Sort by:
+        <a href="{{ url_for('homepage', sort='rank', country=country, gender=gender) }}">Rank</a> |
+        <a href="{{ url_for('homepage', sort='name', country=country, gender=gender) }}">Name</a> |
+        <a href="{{ url_for('homepage', sort='age', country=country, gender=gender) }}">Age</a> |
+        <a href="{{ url_for('homepage', sort='country', country=country, gender=gender) }}">Country</a> |
+        <a href="{{ url_for('homepage', sort='city', country=country, gender=gender) }}">City</a> |
+        <a href="{{ url_for('homepage', sort='gender', country=country, gender=gender) }}">Gender</a> |
+        <a href="{{ url_for('homepage', sort='net_worth_billion', country=country, gender=gender) }}">Net Worth</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Age</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Gender</th>
+                <th>Net Worth ($B)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for people in peoples %}
+                <tr>
+                    <td><a href="{{ url_for('person_summary', person_id=people[0]) }}">{{ people[2] }}</a></td>
+                    <td>{{ people[1] or '[N/A]' }}</td>
+                    <td>{{ people[3] or '[N/A]' }}</td>
+                    <td>{{ people[4] or '[N/A]' }}</td>
+                    <td>{{ people[5] or '[N/A]' }}</td>
+                    <td>{{ people[6] }}</td>
+                    <td>{{ people[7] }}B</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

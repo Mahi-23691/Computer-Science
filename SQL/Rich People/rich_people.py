@@ -4,7 +4,7 @@
 import sqlite3
 
 # Constants and Variables
-DATABASE = r'C:\PersonalUse\School\Computer Science\SQL\Rich People\rich_people.db'
+DATABASE = r'C:\PersonalUse\School\Computer Science\SQL\Rich People\Data\rich_people.db'
 
 # Work Functions
 
@@ -16,7 +16,7 @@ def connect_db():
 def print_header(title):
     print(f"\n{'=' * 10} {title} {'=' * 10}")
 
-# Allign with gaps
+# Allign with gaps and print out N/A if needed
 def gap(value, width):
     if value is None:
         return "[N/A]".ljust(width)
@@ -84,7 +84,7 @@ def filter_by_location():
 
 # Filter by gender with input
 def filter_by_gender():
-    gender = input("Enter a gender ((M)ale / )(F)emale): ").strip()
+    gender = input("Enter a gender (Male / Female): ").strip()
     db = connect_db()
     cursor = db.cursor()
     cursor.execute('SELECT name, gender, net_worth_billion FROM People WHERE gender = ? COLLATE NOCASE;', (gender,))

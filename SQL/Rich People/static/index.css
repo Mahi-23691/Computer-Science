@@ -1,0 +1,41 @@
+body {
+            font-family: Arial, sans-serif;
+            background: #85BB65;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+            cursor: pointer;
+            position: relative;
+        }
+        th .filter-box, th .gender-box {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 5px;
+            z-index: 10;
+        }
+        .btn-toggle {
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
