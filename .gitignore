@@ -10,8 +10,7 @@
 /.vs
 /bin
 *.obj
-app.py
-/utilities
+\utilities
 /Testing
 
 # Won't ignore these .exe files
