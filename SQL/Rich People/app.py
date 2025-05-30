@@ -1,4 +1,4 @@
-"""Simple Database application with Flask and Python by Mahi Mahatab"""
+"""Simple Database application about rich people and their business industries with Flask and Python by Mahi Mahatab"""
 """This is my final result for this assessment based on GUI"""
 
 # Imports
@@ -7,7 +7,7 @@ import sqlite3
 
 # Initializing App and Database Path
 app = Flask(__name__)
-DATABASE = r'rich_people.db'
+DATABASE = 'rich_people.db'
 
 # Database connection
 def connect_db():
