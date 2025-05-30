@@ -5,7 +5,7 @@
 import sqlite3
 
 # Constants and Variables
-DATABASE = r'C:\PersonalUse\School\Computer Science\SQL\Rich People\Data\rich_people.db'
+DATABASE = r'SQL\Rich People\Data\rich_people.db'
 
 # Work Functions
 
