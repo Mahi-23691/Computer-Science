@@ -25,8 +25,8 @@ def filtering(sort_by=None, country=None, gender=None):
 
     # Checks if the user typed a country name for the filter
     if country:
-        choice.append("country = ?")
-        user_input.append(country)# Adds the input country to user_input list
+        choice.append("LOWER(country) = ?")
+        user_input.append(country.lower())# Adds the input country to user_input list
 
     # Checks if the user selected a gender from dropdown and adds it to the filter
     if gender:
