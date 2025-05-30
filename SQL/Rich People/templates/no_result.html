@@ -1,0 +1,31 @@
+<!-- This is a page for when there is no results -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>No Results Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+    <!-- Error message card -->
+    <div class="card">
+        <h2>No Billionaires Found</h2>
+
+        <!-- Message for the user -->
+        <div class="info">
+            Sorry, no results match your current filter{{ 's' if country else '' }}.
+        </div>
+
+        <!-- Show selected country if there is any provided by the user -->
+        {% if country %}
+            <div class="info"><strong>Country:</strong> {{ country }}</div>
+        {% endif %}
+
+        <br>
+        <!-- Link back to the homepage -->
+        <a href="{{ url_for('homepage') }}"><<< Back to List</a>
+    </div>
+
+</body>
+</html>

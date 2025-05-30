@@ -1,3 +1,4 @@
+<!-- This is the summary page for an individual billionaire -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='summary.css') }}">
 </head>
 <body>
+
+    <!-- Summary Card -->
     <div class="card">
+        <!-- Billionaire's Name -->
         <h2>{{ name }}</h2>
+
+        <!-- Display organization, or [N/A] if missing -->
         <div class="info"><strong>Organization:</strong> {{ organization if organization else "[N/A]" }}</div>
+
+        <!-- Display position, or [N/A] if missing -->
         <div class="info"><strong>Position:</strong> {{ position if position else "[N/A]" }}</div>
+
+        <!-- Display origin -->
         <div class="info"><strong>Origin:</strong> {{ origin }}</div>
+
         <br>
+        <!-- Link back to homepage -->
         <a href="{{ url_for('homepage') }}"><<< Back to List</a>
     </div>   
+
 </body>
 </html>

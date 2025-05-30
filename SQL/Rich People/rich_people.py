@@ -1,4 +1,5 @@
 """Database about Rich People by Mahi Mahatab, May 2025"""
+"""This is a simple CLI based program!!!"""
 
 #Imports
 import sqlite3

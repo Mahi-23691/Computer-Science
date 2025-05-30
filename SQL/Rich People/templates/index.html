@@ -1,3 +1,4 @@
+<!-- This is the main HTML file for showing the billionaire rankings -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +8,18 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='index.css') }}">
 </head>
 <body>
+
+    <!-- Main Title -->
     <h1>Top Billionaires</h1>
 
+    <!-- Filter by country and gender -->
     <form method="get" action="{{ url_for('homepage') }}">
+        
+        <!-- Input for Country filter -->
         <label for="country">Country:</label>
         <input type="text" name="country" id="country" value="{{ country or '' }}">
 
+        <!-- Dropdown for Gender filter -->
         <label for="gender">Gender:</label>
         <select name="gender" id="gender">
             <option value="">-- Select --</option>
@@ -20,9 +27,11 @@
             <option value="Female" {% if gender == "Female" %}selected{% endif %}>Female</option>
         </select>
 
+        <!-- Button to apply the filters -->
         <button type="submit">Apply Filters</button>
     </form>
 
+    <!-- Sorting Options -->
     <p>Sort by:
         <a href="{{ url_for('homepage', sort='rank', country=country, gender=gender) }}">Rank</a> |
         <a href="{{ url_for('homepage', sort='name', country=country, gender=gender) }}">Name</a> |
@@ -33,6 +42,7 @@
         <a href="{{ url_for('homepage', sort='net_worth_billion', country=country, gender=gender) }}">Net Worth</a>
     </p>
 
+    <!-- Table displaying list of billionaires -->
     <table>
         <thead>
             <tr>
@@ -46,18 +56,21 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Loop through each person in the list -->
             {% for people in peoples %}
                 <tr>
+                    <!-- Name linking to their summary page -->
                     <td><a href="{{ url_for('person_summary', person_id=people[0]) }}">{{ people[2] }}</a></td>
                     <td>{{ people[1] or '[N/A]' }}</td>
                     <td>{{ people[3] or '[N/A]' }}</td>
                     <td>{{ people[4] or '[N/A]' }}</td>
                     <td>{{ people[5] or '[N/A]' }}</td>
                     <td>{{ people[6] }}</td>
-                    <td>{{ people[7] }}B</td>
+                    <td>{{ people[7] }} B</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
 </body>
 </html>

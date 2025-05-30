@@ -1,32 +1,37 @@
+/* Main Page */
 body {
-            font-family: Arial, sans-serif;
-            margin: 2em;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    background-color: #85BB65;
+    color: #333;
+}
 
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-        }
+/* Card container for summary */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
 
-        h2 {
-            margin-bottom: 0.5em;
-        }
+/* Header */
+h2 {
+    margin-bottom: 0.5em;
+}
 
-        .info {
-            margin-bottom: 0.5em;
-        }
+/* Individual info */
+.info {
+    margin-bottom: 0.5em;
+}
 
-        a {
-            text-decoration: none;
-            color: #3498db;
-        }
+/* Hyperink styling */
+a {
+    text-decoration: none;
+    color: #3498db;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+a:hover {
+    text-decoration: underline;
+}
