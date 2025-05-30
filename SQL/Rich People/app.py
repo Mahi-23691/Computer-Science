@@ -7,7 +7,7 @@ import sqlite3
 
 # Initializing App and Database Path
 app = Flask(__name__)
-DATABASE = r'SQL\Rich People\Data\rich_people.db'
+DATABASE = r'rich_people.db'
 
 # Database connection
 def connect_db():
